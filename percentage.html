@@ -6,7 +6,9 @@
 
 <title>Percentage Calculator Hub</title>
 <meta name="description" content="All-in-one percentage calculator: increase, decrease, discount, reverse percentage, and more.">
-<link rel="stylesheet" href="static/style.css">
+
+<!-- Same-folder CSS -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -21,124 +23,100 @@
 
 <div class="grid">
 
-<!-- 1 -->
 <div class="card">
 <h2>What is X% of Y?</h2>
-
-<input id="p1" placeholder="Percentage (X)" value="20">
-<input id="v1" placeholder="Value (Y)" value="500">
-
+<input type="number" id="p1" placeholder="Percentage (X)" value="20">
+<input type="number" id="v1" placeholder="Value (Y)" value="500">
 <button onclick="calc1()">Calculate</button>
 <div class="result" id="r1">0</div>
 <div class="small" id="e1"></div>
 </div>
 
-<!-- 2 -->
 <div class="card">
 <h2>X is what % of Y?</h2>
-
-<input id="p2" placeholder="Part" value="50">
-<input id="v2" placeholder="Total" value="200">
-
+<input type="number" id="p2" placeholder="Part" value="50">
+<input type="number" id="v2" placeholder="Total" value="200">
 <button onclick="calc2()">Calculate</button>
 <div class="result" id="r2">0%</div>
 <div class="small" id="e2"></div>
 </div>
 
-<!-- 3 -->
 <div class="card">
 <h2>Percentage Increase</h2>
-
-<input id="old3" placeholder="Old Value" value="100">
-<input id="new3" placeholder="New Value" value="150">
-
+<input type="number" id="old3" placeholder="Old Value" value="100">
+<input type="number" id="new3" placeholder="New Value" value="150">
 <button onclick="calc3()">Calculate</button>
 <div class="result" id="r3">0%</div>
 <div class="small" id="e3"></div>
 </div>
 
-<!-- 4 -->
 <div class="card">
 <h2>Percentage Decrease</h2>
-
-<input id="old4" placeholder="Old Value" value="500">
-<input id="new4" placeholder="New Value" value="350">
-
+<input type="number" id="old4" placeholder="Old Value" value="500">
+<input type="number" id="new4" placeholder="New Value" value="350">
 <button onclick="calc4()">Calculate</button>
 <div class="result" id="r4">0%</div>
 <div class="small" id="e4"></div>
 </div>
 
-<!-- 5 -->
 <div class="card">
 <h2>Add Percentage</h2>
-
-<input id="val5" placeholder="Value" value="1000">
-<input id="per5" placeholder="Percentage" value="18">
-
+<input type="number" id="val5" placeholder="Value" value="1000">
+<input type="number" id="per5" placeholder="Percentage" value="18">
 <button onclick="calc5()">Calculate</button>
 <div class="result" id="r5">0</div>
 <div class="small" id="e5"></div>
 </div>
 
-<!-- 6 -->
 <div class="card">
 <h2>Subtract Percentage</h2>
-
-<input id="val6" placeholder="Value" value="1000">
-<input id="per6" placeholder="Percentage" value="18">
-
+<input type="number" id="val6" placeholder="Value" value="1000">
+<input type="number" id="per6" placeholder="Percentage" value="18">
 <button onclick="calc6()">Calculate</button>
 <div class="result" id="r6">0</div>
 <div class="small" id="e6"></div>
 </div>
 
-<!-- 7 -->
 <div class="card">
 <h2>Reverse Percentage</h2>
-
-<input id="val7" placeholder="Final Value" value="118">
-<input id="per7" placeholder="Percentage" value="18">
-
+<input type="number" id="val7" placeholder="Final Value" value="118">
+<input type="number" id="per7" placeholder="Percentage" value="18">
 <button onclick="calc7()">Calculate</button>
 <div class="result" id="r7">0</div>
 <div class="small" id="e7"></div>
 </div>
 
-<!-- 8 -->
 <div class="card">
 <h2>Percentage Difference</h2>
-
-<input id="a8" placeholder="Value A" value="80">
-<input id="b8" placeholder="Value B" value="100">
-
+<input type="number" id="a8" placeholder="Value A" value="80">
+<input type="number" id="b8" placeholder="Value B" value="100">
 <button onclick="calc8()">Calculate</button>
 <div class="result" id="r8">0%</div>
 <div class="small" id="e8"></div>
 </div>
 
-<!-- 9 -->
 <div class="card">
 <h2>Discount Calculator</h2>
-
-<input id="price9" placeholder="Price" value="2000">
-<input id="disc9" placeholder="Discount %" value="25">
-
+<input type="number" id="price9" placeholder="Price" value="2000">
+<input type="number" id="disc9" placeholder="Discount %" value="25">
 <button onclick="calc9()">Calculate</button>
 <div class="result" id="r9">0</div>
 <div class="small" id="e9"></div>
 </div>
 
 </div>
+
+<footer style="margin-top:30px;text-align:center;">
+    <a href="index.html">← Back to Calculator Hub</a>
+</footer>
+
 </div>
 
 <script>
-
 function num(id){
     return parseFloat(document.getElementById(id).value) || 0;
 }
 
-/* 1 */
 function calc1(){
     let p=num('p1'), v=num('v1');
     let r=(p/100)*v;
@@ -146,7 +124,6 @@ function calc1(){
     document.getElementById('e1').innerText=`${p}% of ${v} = ${r.toFixed(2)}`;
 }
 
-/* 2 */
 function calc2(){
     let p=num('p2'), v=num('v2');
     let r=(p/v)*100;
@@ -154,7 +131,6 @@ function calc2(){
     document.getElementById('e2').innerText=`${p} is ${r.toFixed(2)}% of ${v}`;
 }
 
-/* 3 */
 function calc3(){
     let o=num('old3'), n=num('new3');
     let r=((n-o)/o)*100;
@@ -162,7 +138,6 @@ function calc3(){
     document.getElementById('e3').innerText=`Increase = ${r.toFixed(2)}%`;
 }
 
-/* 4 */
 function calc4(){
     let o=num('old4'), n=num('new4');
     let r=((o-n)/o)*100;
@@ -170,7 +145,6 @@ function calc4(){
     document.getElementById('e4').innerText=`Decrease = ${r.toFixed(2)}%`;
 }
 
-/* 5 */
 function calc5(){
     let v=num('val5'), p=num('per5');
     let r=v+(v*p/100);
@@ -178,7 +152,6 @@ function calc5(){
     document.getElementById('e5').innerText=`${p}% added = ${r.toFixed(2)}`;
 }
 
-/* 6 */
 function calc6(){
     let v=num('val6'), p=num('per6');
     let r=v-(v*p/100);
@@ -186,7 +159,6 @@ function calc6(){
     document.getElementById('e6').innerText=`${p}% removed = ${r.toFixed(2)}`;
 }
 
-/* 7 */
 function calc7(){
     let v=num('val7'), p=num('per7');
     let r=v/(1+p/100);
@@ -194,7 +166,6 @@ function calc7(){
     document.getElementById('e7').innerText=`Original value = ${r.toFixed(2)}`;
 }
 
-/* 8 */
 function calc8(){
     let a=num('a8'), b=num('b8');
     let r=(Math.abs(a-b)/((a+b)/2))*100;
@@ -202,16 +173,13 @@ function calc8(){
     document.getElementById('e8').innerText=`Difference = ${r.toFixed(2)}%`;
 }
 
-/* 9 */
 function calc9(){
     let p=num('price9'), d=num('disc9');
     let r=p-(p*d/100);
     document.getElementById('r9').innerText=r.toFixed(2);
     document.getElementById('e9').innerText=`Final price = ${r.toFixed(2)}`;
 }
-
 </script>
 
 </body>
 </html>
-
