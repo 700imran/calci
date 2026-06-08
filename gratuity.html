@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gratuity Calculator</title>
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Gratuity Calculator</h1>
+
+    <p class="subtitle">
+        Calculate gratuity amount based on salary and years of service
+    </p>
+
+    <div class="calculator">
+
+        <div class="grid">
+
+            <div class="form-group">
+                <label>Last Drawn Salary (Basic + DA)</label>
+                <input type="number" id="salary" value="50000">
+            </div>
+
+            <div class="form-group">
+                <label>Years of Service</label>
+                <input type="number" id="years" value="7">
+            </div>
+
+            <div class="form-group">
+                <label>Additional Months</label>
+                <input type="number" id="months" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>Employment Type</label>
+
+                <select id="coverage">
+                    <option value="covered">
+                        Covered Under Gratuity Act
+                    </option>
+
+                    <option value="not-covered">
+                        Not Covered Under Gratuity Act
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="calculateGratuity()">
+            Calculate Gratuity
+        </button>
+
+    </div>
+
+    <div class="results">
+
+        <div class="card">
+            <h3>Eligible Service</h3>
+            <p id="serviceYears">0 Years</p>
+        </div>
+
+        <div class="card">
+            <h3>Eligibility Status</h3>
+            <p id="eligibility">-</p>
+        </div>
+
+        <div class="card">
+            <h3>Estimated Gratuity</h3>
+            <p class="gratuity" id="gratuityAmount">₹0</p>
+        </div>
+
+    </div>
+
+    <div class="note" id="formulaNote">
+        Formula:
+        (Salary × 15 × Years of Service) ÷ 26
+    </div>
+
+</div>
+
+<script>
+
+function formatINR(amount){
+    return '₹' +
+    Math.round(amount).toLocaleString('en-IN');
+}
+
+function calculateGratuity(){
+
+    let salary =
+    parseFloat(
+        document.getElementById('salary').value
+    ) || 0;
+
+    let years =
+    parseInt(
+        document.getElementById('years').value
+    ) || 0;
+
+    let months =
+    parseInt(
+        document.getElementById('months').value
+    ) || 0;
+
+    const coverage =
+    document.getElementById('coverage').value;
+
+    if(months >= 6){
+        years += 1;
+    }
+
+    let divisor = 26;
+
+    if(coverage === 'not-covered'){
+        divisor = 30;
+    }
+
+    const gratuity =
+    (salary * 15 * years) / divisor;
+
+    document.getElementById(
+        'serviceYears'
+    ).innerText =
+    years + ' Years';
+
+    if(years >= 5){
+
+        document.getElementById(
+            'eligibility'
+        ).innerHTML =
+        '<span class="eligible">Eligible</span>';
+
+    }else{
+
+        document.getElementById(
+            'eligibility'
+        ).innerHTML =
+        '<span class="not-eligible">Not Eligible</span>';
+    }
+
+    document.getElementById(
+        'gratuityAmount'
+    ).innerText =
+    formatINR(gratuity);
+
+    document.getElementById(
+        'formulaNote'
+    ).innerHTML =
+    coverage === 'covered'
+    ?
+    'Formula: (Salary × 15 × Years of Service) ÷ 26'
+    :
+    'Formula: (Salary × 15 × Years of Service) ÷ 30';
+}
+
+calculateGratuity();
+
+</script>
+
+</body>
+</html>
+

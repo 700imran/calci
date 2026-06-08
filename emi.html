@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator</title>
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>EMI Calculator</h1>
+
+    <p class="subtitle">
+        Calculate Home Loan, Personal Loan, Car Loan and Education Loan EMI
+    </p>
+
+    <div class="calculator">
+
+        <div class="grid">
+
+            <div class="form-group">
+                <label>Loan Type</label>
+
+                <select>
+                    <option>Home Loan</option>
+                    <option>Personal Loan</option>
+                    <option>Car Loan</option>
+                    <option>Education Loan</option>
+                    <option>Business Loan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Loan Amount (₹)</label>
+                <input type="number" id="loanAmount" value="1000000">
+            </div>
+
+            <div class="form-group">
+                <label>Interest Rate (% p.a.)</label>
+                <input type="number" id="interestRate" value="8.5">
+            </div>
+
+            <div class="form-group">
+                <label>Loan Tenure (Years)</label>
+                <input type="number" id="loanYears" value="20">
+            </div>
+
+        </div>
+
+        <button onclick="calculateEMI()">
+            Calculate EMI
+        </button>
+
+    </div>
+
+    <div class="results">
+
+        <div class="card">
+            <h3>Monthly EMI</h3>
+            <p id="emiValue">₹0</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Interest</h3>
+            <p class="green" id="interestValue">₹0</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Payment</h3>
+            <p id="paymentValue">₹0</p>
+        </div>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Principal Paid</th>
+                    <th>Interest Paid</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+
+            <tbody id="scheduleBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+function formatINR(value){
+    return '₹' +
+    Math.round(value)
+    .toLocaleString('en-IN');
+}
+
+function calculateEMI(){
+
+    const principal =
+    parseFloat(
+        document.getElementById(
+        'loanAmount').value
+    );
+
+    const annualRate =
+    parseFloat(
+        document.getElementById(
+        'interestRate').value
+    );
+
+    const years =
+    parseFloat(
+        document.getElementById(
+        'loanYears').value
+    );
+
+    const monthlyRate =
+    annualRate / 12 / 100;
+
+    const months =
+    years * 12;
+
+    const emi =
+    principal *
+    monthlyRate *
+    Math.pow(
+        1 + monthlyRate,
+        months
+    ) /
+    (
+        Math.pow(
+            1 + monthlyRate,
+            months
+        ) - 1
+    );
+
+    const totalPayment =
+    emi * months;
+
+    const totalInterest =
+    totalPayment - principal;
+
+    document.getElementById(
+        'emiValue'
+    ).innerText =
+    formatINR(emi);
+
+    document.getElementById(
+        'interestValue'
+    ).innerText =
+    formatINR(totalInterest);
+
+    document.getElementById(
+        'paymentValue'
+    ).innerText =
+    formatINR(totalPayment);
+
+    createSchedule(
+        principal,
+        monthlyRate,
+        emi,
+        years
+    );
+}
+
+function createSchedule(
+    principal,
+    monthlyRate,
+    emi,
+    years
+){
+
+    let balance = principal;
+
+    const tbody =
+    document.getElementById(
+        'scheduleBody'
+    );
+
+    tbody.innerHTML = '';
+
+    for(let year=1; year<=years; year++){
+
+        let principalPaid = 0;
+        let interestPaid = 0;
+
+        for(let month=1; month<=12; month++){
+
+            const interest =
+            balance *
+            monthlyRate;
+
+            const principalPart =
+            emi - interest;
+
+            balance -= principalPart;
+
+            principalPaid += principalPart;
+            interestPaid += interest;
+
+            if(balance < 0){
+                balance = 0;
+            }
+        }
+
+        tbody.innerHTML += `
+        <tr>
+            <td>${year}</td>
+            <td>${formatINR(principalPaid)}</td>
+            <td>${formatINR(interestPaid)}</td>
+            <td>${formatINR(balance)}</td>
+        </tr>
+        `;
+    }
+}
+
+calculateEMI();
+
+</script>
+
+</body>
+</html>
+

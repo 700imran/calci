@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculator Hub - 50 Free Online Calculators</title>
+<meta name="description" content="Free online calculator hub with 50+ tools including EMI, SIP, GST, Age, BMI, Tax, Finance and more.">
+
+<!-- CSS from static folder -->
+<link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Calculator Hub</h1>
+    <p>50+ Free Online Calculators for Finance, Health, Tax & More</p>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search calculators...">
+    </div>
+</header>
+
+<div class="container">
+<div class="grid" id="grid">
+
+<!-- ================= CORE CALCULATORS ================= -->
+
+<a href="calculators/emi.html" class="card">
+<h3>EMI Calculator</h3>
+<p>Loan EMI calculation tool</p>
+</a>
+
+<a href="calculators/sip.html" class="card">
+<h3>SIP Calculator</h3>
+<p>Mutual fund SIP returns</p>
+</a>
+
+<a href="calculators/gst.html" class="card">
+<h3>GST Calculator</h3>
+<p>Add or remove GST instantly</p>
+</a>
+
+<a href="calculators/gratuity.html" class="card">
+<h3>Gratuity Calculator</h3>
+<p>Employee gratuity value</p>
+</a>
+
+<a href="calculators/percentage.html" class="card">
+<h3>Percentage Calculator</h3>
+<p>All percentage calculations</p>
+</a>
+
+<!-- ================= OTHER CALCULATORS ================= -->
+
+<a href="calculators/income-tax.html" class="card">
+<h3>Income Tax Calculator</h3>
+<p>Estimate yearly tax</p>
+</a>
+
+<a href="calculators/fd.html" class="card">
+<h3>FD Calculator</h3>
+<p>Fixed deposit returns</p>
+</a>
+
+<a href="calculators/rd.html" class="card">
+<h3>RD Calculator</h3>
+<p>Recurring deposit growth</p>
+</a>
+
+<a href="calculators/bmi.html" class="card">
+<h3>BMI Calculator</h3>
+<p>Body mass index check</p>
+</a>
+
+<a href="calculators/age.html" class="card">
+<h3>Age Calculator</h3>
+<p>Find exact age in years & days</p>
+</a>
+
+</div>
+</div>
+
+<footer>
+    © 2026 Calculator Hub • All Rights Reserved
+</footer>
+
+<script>
+document.getElementById("search").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+        card.style.display = card.innerText.toLowerCase().includes(value)
+        ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>
