@@ -3,61 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GST Calculator</title>
-<link rel="stylesheet" href="static/style.css">
+
+<!-- Same folder CSS -->
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-<div class="calculator">
+<div class="container">
 
-    <h1>GST Calculator</h1>
-
-    <div class="form-group">
-        <label>Calculation Type</label>
-        <select id="type">
-            <option value="exclusive">Add GST</option>
-            <option value="inclusive">Remove GST</option>
-        </select>
+    <div class="header">
+        <h1>GST Calculator</h1>
+        <p>Calculate GST Inclusive and Exclusive Amounts Instantly</p>
     </div>
 
-    <div class="form-group">
-        <label>Amount (₹)</label>
-        <input type="number" id="amount" placeholder="Enter amount">
+    <div class="calculator">
+
+        <div class="form-group">
+            <label>Calculation Type</label>
+            <select id="type">
+                <option value="exclusive">Add GST</option>
+                <option value="inclusive">Remove GST</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Amount (₹)</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+        </div>
+
+        <div class="form-group">
+            <label>GST Rate</label>
+            <select id="gst">
+                <option value="5">5%</option>
+                <option value="12">12%</option>
+                <option value="18" selected>18%</option>
+                <option value="28">28%</option>
+            </select>
+        </div>
+
+        <button onclick="calculateGST()">
+            Calculate GST
+        </button>
+
+        <div class="result" id="result">
+            <p><span>Base Amount</span><strong>₹0.00</strong></p>
+            <p><span>GST Amount</span><strong>₹0.00</strong></p>
+            <p><span>Total Amount</span><strong>₹0.00</strong></p>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label>GST Rate</label>
-        <select id="gst">
-            <option value="5">5%</option>
-            <option value="12">12%</option>
-            <option value="18" selected>18%</option>
-            <option value="28">28%</option>
-        </select>
-    </div>
-
-    <button onclick="calculateGST()">Calculate GST</button>
-
-    <div class="result" id="result">
-        <p><span>Base Amount</span><strong>₹0.00</strong></p>
-        <p><span>GST Amount</span><strong>₹0.00</strong></p>
-        <p><span>Total Amount</span><strong>₹0.00</strong></p>
-    </div>
+    <footer style="margin-top:30px;text-align:center;">
+        <a href="index.html">← Back to Calculator Hub</a>
+    </footer>
 
 </div>
 
 <script>
 function calculateGST(){
 
-    const amount = parseFloat(
-        document.getElementById('amount').value
-    ) || 0;
+    const amount =
+    parseFloat(document.getElementById('amount').value) || 0;
 
-    const gstRate = parseFloat(
-        document.getElementById('gst').value
-    );
+    const gstRate =
+    parseFloat(document.getElementById('gst').value);
 
     const type =
-        document.getElementById('type').value;
+    document.getElementById('type').value;
 
     let baseAmount = 0;
     let gstAmount = 0;
@@ -72,10 +87,10 @@ function calculateGST(){
     }else{
 
         baseAmount =
-            amount / (1 + gstRate/100);
+        amount / (1 + gstRate / 100);
 
         gstAmount =
-            amount - baseAmount;
+        amount - baseAmount;
 
         totalAmount = amount;
     }
@@ -93,7 +108,7 @@ function calculateGST(){
 
         <p>
             <span>Total Amount</span>
-            <strong>₹${totalAmount.toFixed(2)}</strong>
+            <strong>₹${gstAmount.toFixed(2)}</strong>
         </p>
     `;
 }
