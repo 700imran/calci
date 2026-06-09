@@ -483,4 +483,37 @@ th,td{
     }
 }
 }
+/* AD BOX (replace inline style) */
+.ad-box{
+    margin-top: 30px;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+}
 
+/* MOBILE MENU */
+.menu-btn{
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* responsive nav */
+@media (max-width: 768px){
+    .menu-btn{
+        display: block;
+    }
+
+    .nav-links{
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
+}
