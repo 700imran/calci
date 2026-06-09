@@ -4,98 +4,328 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GST Calculator</title>
+<title>GST Calculator – Calculate GST Amount Online in India (Inclusive & Exclusive GST)</title>
 
-<!-- Same folder CSS -->
+<meta name="description" content="Use our free GST Calculator to calculate GST amount instantly. Find GST-inclusive and GST-exclusive prices, GST percentages, tax amounts, and final invoice values online in India.">
+
+<meta name="keywords" content="GST Calculator, Online GST Calculator, GST Tax Calculator, GST Amount Calculator, GST Inclusive Calculator, GST Exclusive Calculator, GST Calculator India, GST Percentage Calculator, GST Rate Calculator, Free GST Calculator">
+
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
 <div class="container">
 
-    <div class="header">
+    <!-- Calculator Section -->
+
+    <section class="calculator-section">
+
         <h1>GST Calculator</h1>
-        <p>Calculate GST Inclusive and Exclusive Amounts Instantly</p>
-    </div>
 
-    <div class="calculator">
+        <p class="intro">
+            Calculate GST online instantly using our free GST Calculator.
+            Find GST-inclusive and GST-exclusive values, tax amount,
+            taxable value, and final invoice amount within seconds.
+        </p>
 
-        <div class="form-group">
-            <label>Calculation Type</label>
-            <select id="type">
-                <option value="exclusive">Add GST</option>
-                <option value="inclusive">Remove GST</option>
-            </select>
+        <div class="calculator">
+
+            <div class="form-group">
+                <label for="type">Calculation Type</label>
+                <select id="type">
+                    <option value="exclusive">Add GST</option>
+                    <option value="inclusive">Remove GST</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount (₹)</label>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter amount"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="gst">GST Rate</label>
+                <select id="gst">
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18" selected>18%</option>
+                    <option value="28">28%</option>
+                </select>
+            </div>
+
+            <button onclick="calculateGST()">
+                Calculate GST
+            </button>
+
+            <div class="result" id="result">
+
+                <p>
+                    <span>Base Amount</span>
+                    <strong>₹0.00</strong>
+                </p>
+
+                <p>
+                    <span>GST Amount</span>
+                    <strong>₹0.00</strong>
+                </p>
+
+                <p>
+                    <span>Total Amount</span>
+                    <strong>₹0.00</strong>
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="form-group">
-            <label>Amount (₹)</label>
-            <input type="number" id="amount" placeholder="Enter amount">
-        </div>
+    </section>
 
-        <div class="form-group">
-            <label>GST Rate</label>
-            <select id="gst">
-                <option value="5">5%</option>
-                <option value="12">12%</option>
-                <option value="18" selected>18%</option>
-                <option value="28">28%</option>
-            </select>
-        </div>
+    <!-- SEO Content Section -->
 
-        <button onclick="calculateGST()">
-            Calculate GST
-        </button>
+    <section class="content-section">
 
-        <div class="result" id="result">
-            <p><span>Base Amount</span><strong>₹0.00</strong></p>
-            <p><span>GST Amount</span><strong>₹0.00</strong></p>
-            <p><span>Total Amount</span><strong>₹0.00</strong></p>
-        </div>
+        <h2>What is a GST Calculator?</h2>
 
-    </div>
+        <p>
+            A GST Calculator is an online tool that helps businesses,
+            professionals, shop owners, freelancers, and consumers calculate
+            Goods and Services Tax (GST) quickly and accurately. Whether you
+            need to add GST to a product price or remove GST from an
+            inclusive amount, this Online GST Calculator provides instant
+            results without manual calculations.
+        </p>
 
-    <footer style="margin-top:30px;text-align:center;">
-        <a href="index.html">← Back to Calculator Hub</a>
-    </footer>
+        <p>
+            Since GST rates in India vary depending on the category of goods
+            and services, calculating tax manually can often lead to errors.
+            Using a GST Amount Calculator simplifies the process and ensures
+            accurate tax calculations for invoices, quotations, accounting,
+            and tax planning.
+        </p>
+
+        <h2>What is GST?</h2>
+
+        <p>
+            GST (Goods and Services Tax) is an indirect tax implemented in
+            India on July 1, 2017. It replaced multiple indirect taxes and
+            created a unified taxation system throughout the country.
+        </p>
+
+        <p>
+            GST is classified into:
+        </p>
+
+        <ul>
+            <li>CGST (Central Goods and Services Tax)</li>
+            <li>SGST (State Goods and Services Tax)</li>
+            <li>IGST (Integrated Goods and Services Tax)</li>
+            <li>UTGST (Union Territory Goods and Services Tax)</li>
+        </ul>
+
+        <p>
+            Common GST slabs in India include 5%, 12%, 18%, and 28%.
+            Our GST Calculator India supports all major GST rates used
+            across industries.
+        </p>
+
+        <h2>How Does the GST Calculator Work?</h2>
+
+        <p>
+            The GST Tax Calculator applies the selected GST percentage to the
+            taxable value or extracts the tax amount from an inclusive price.
+        </p>
+
+        <h3>GST Exclusive Calculation</h3>
+
+        <p>
+            Use this method when GST needs to be added to the original price.
+        </p>
+
+        <p><strong>Formula:</strong></p>
+
+        <p>
+            GST Amount = Original Amount × GST Rate ÷ 100
+        </p>
+
+        <p>
+            Final Amount = Original Amount + GST Amount
+        </p>
+
+        <h3>GST Inclusive Calculation</h3>
+
+        <p>
+            Use this method when the entered amount already includes GST.
+        </p>
+
+        <p><strong>Formula:</strong></p>
+
+        <p>
+            GST Amount = Inclusive Amount × GST Rate ÷ (100 + GST Rate)
+        </p>
+
+        <p>
+            Original Amount = Inclusive Amount − GST Amount
+        </p>
+
+        <h2>GST Calculation Example</h2>
+
+        <p>
+            Suppose the product value is ₹10,000 and the GST rate is 18%.
+        </p>
+
+        <p>
+            GST Amount = ₹10,000 × 18 ÷ 100 = ₹1,800
+        </p>
+
+        <p>
+            Total Price = ₹10,000 + ₹1,800 = ₹11,800
+        </p>
+
+        <p>
+            If ₹11,800 is already GST-inclusive:
+        </p>
+
+        <p>
+            GST Amount = ₹11,800 × 18 ÷ 118 = ₹1,800
+        </p>
+
+        <p>
+            Taxable Value = ₹10,000
+        </p>
+
+        <h2>How to Use This GST Calculator</h2>
+
+        <ol>
+            <li>Enter the amount.</li>
+            <li>Select Add GST or Remove GST.</li>
+            <li>Choose the GST rate.</li>
+            <li>Click Calculate GST.</li>
+            <li>View GST amount and total value instantly.</li>
+        </ol>
+
+        <h2>Benefits of Using an Online GST Calculator</h2>
+
+        <ul>
+            <li>Saves time during billing and invoicing.</li>
+            <li>Provides accurate GST calculations.</li>
+            <li>Reduces manual errors.</li>
+            <li>Useful for businesses and individuals.</li>
+            <li>Supports GST compliance and reporting.</li>
+            <li>Easy to use on desktop and mobile devices.</li>
+        </ul>
+
+        <h2>Who Can Use This GST Calculator?</h2>
+
+        <ul>
+            <li>Business Owners</li>
+            <li>Accountants</li>
+            <li>Freelancers</li>
+            <li>Tax Consultants</li>
+            <li>Retailers and Shopkeepers</li>
+            <li>E-commerce Sellers</li>
+            <li>Students Learning Taxation</li>
+            <li>Consumers</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What is a GST Calculator?</h3>
+
+        <p>
+            A GST Calculator is a tool that calculates GST amount,
+            taxable value, and final invoice value automatically.
+        </p>
+
+        <h3>Is this GST Calculator free?</h3>
+
+        <p>
+            Yes, this GST Calculator is completely free and can be used
+            unlimited times.
+        </p>
+
+        <h3>Can I calculate GST from an inclusive amount?</h3>
+
+        <p>
+            Yes. This GST Inclusive Calculator allows you to extract GST
+            from prices that already include tax.
+        </p>
+
+        <h3>Can I calculate GST on a base amount?</h3>
+
+        <p>
+            Yes. The GST Exclusive Calculator can add GST to the original
+            product or service value.
+        </p>
+
+        <h3>What GST rates are supported?</h3>
+
+        <p>
+            Common GST slabs including 5%, 12%, 18%, and 28% are supported.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            A GST Calculator is an essential tool for businesses and
+            individuals who need accurate GST calculations. Whether you
+            want to calculate GST on a product price, determine the tax
+            component of an invoice, or estimate the final amount payable,
+            this Free GST Calculator provides quick and reliable results.
+            Use this Online GST Calculator anytime to calculate GST-inclusive
+            or GST-exclusive amounts with complete accuracy.
+        </p>
+
+    </section>
 
 </div>
 
 <script>
+
 function calculateGST(){
 
-    const amount =
-    parseFloat(document.getElementById('amount').value) || 0;
+    const amount = parseFloat(
+        document.getElementById("amount").value
+    ) || 0;
 
-    const gstRate =
-    parseFloat(document.getElementById('gst').value);
+    const gstRate = parseFloat(
+        document.getElementById("gst").value
+    );
 
     const type =
-    document.getElementById('type').value;
+        document.getElementById("type").value;
 
     let baseAmount = 0;
     let gstAmount = 0;
     let totalAmount = 0;
 
-    if(type === 'exclusive'){
-
-        gstAmount = amount * gstRate / 100;
-        totalAmount = amount + gstAmount;
-        baseAmount = amount;
-
-    }else{
-
-        baseAmount =
-        amount / (1 + gstRate / 100);
+    if(type === "exclusive"){
 
         gstAmount =
-        amount - baseAmount;
+            amount * gstRate / 100;
 
-        totalAmount = amount;
+        totalAmount =
+            amount + gstAmount;
+
+        baseAmount =
+            amount;
+
+    } else {
+
+        baseAmount =
+            amount / (1 + gstRate / 100);
+
+        gstAmount =
+            amount - baseAmount;
+
+        totalAmount =
+            amount;
     }
 
-    document.getElementById('result').innerHTML = `
+    document.getElementById("result").innerHTML = `
         <p>
             <span>Base Amount</span>
             <strong>₹${baseAmount.toFixed(2)}</strong>
@@ -108,10 +338,11 @@ function calculateGST(){
 
         <p>
             <span>Total Amount</span>
-            <strong>₹${gstAmount.toFixed(2)}</strong>
+            <strong>₹${totalAmount.toFixed(2)}</strong>
         </p>
     `;
 }
+
 </script>
 
 </body>
