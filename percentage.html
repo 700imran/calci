@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gratuity Calculator – Calculate Employee Gratuity Online Instantly</title>
+<title>Percentage Calculator – Calculate Percentage Increase, Decrease & Marks Online</title>
 
-<meta name="description" content="Use our free Gratuity Calculator to calculate employee gratuity based on salary and years of service. Get instant eligibility and payout results in India.">
+<meta name="description" content="Use our free Percentage Calculator to calculate percentage increase, decrease, marks percentage, and values instantly. Fast and accurate online percentage calculator.">
+
+<meta name="keywords" content="Percentage Calculator, Online Percentage Calculator, Percent Calculator, Percentage Increase Calculator, Percentage Decrease Calculator, Marks Percentage Calculator, Percentage Change Calculator, Free Percentage Calculator, Percentage Calculator Online, Percentage Calculation Tool">
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,73 +19,150 @@
 
 <div class="container">
 
+<!-- HEADER -->
 <div class="header">
-    <h1>Gratuity Calculator</h1>
-    <p>Calculate employee gratuity instantly based on salary & service years</p>
+    <h1>Percentage Calculator</h1>
+    <p>Calculate percentage increase, decrease, marks & more instantly</p>
 </div>
 
-<div class="grid">
-
-<!-- SALARY -->
-<div class="card">
-    <h2>Last Drawn Salary (Basic + DA)</h2>
-    <input type="number" id="salary" value="50000">
-</div>
-
-<!-- YEARS -->
-<div class="card">
-    <h2>Years of Service</h2>
-    <input type="number" id="years" value="7">
-</div>
-
-<!-- MONTHS -->
-<div class="card">
-    <h2>Additional Months</h2>
-    <input type="number" id="months" value="0">
-</div>
-
-<!-- COVERAGE -->
-<div class="card">
-    <h2>Employment Type</h2>
-
-    <select id="coverage">
-        <option value="covered">Covered Under Gratuity Act</option>
-        <option value="not-covered">Not Covered Under Gratuity Act</option>
-    </select>
-
-</div>
-
-<!-- BUTTON -->
-<div class="card">
-    <h2>Calculate</h2>
-    <button onclick="calculateGratuity()">Calculate Gratuity</button>
-</div>
-
-</div>
-
-<!-- RESULTS -->
+<!-- CALCULATOR -->
 <div class="grid">
 
 <div class="card">
-    <h2>Eligible Service</h2>
-    <div class="result" id="serviceYears">0 Years</div>
+    <h2>What is X% of Y?</h2>
+    <input type="number" id="p1" placeholder="Percentage (X)" value="20">
+    <input type="number" id="v1" placeholder="Value (Y)" value="500">
+    <button onclick="calc1()">Calculate</button>
+    <div class="result" id="r1">0</div>
+    <div class="small" id="e1"></div>
 </div>
 
 <div class="card">
-    <h2>Eligibility Status</h2>
-    <div class="result" id="eligibility">-</div>
+    <h2>X is what % of Y?</h2>
+    <input type="number" id="p2" placeholder="Part" value="50">
+    <input type="number" id="v2" placeholder="Total" value="200">
+    <button onclick="calc2()">Calculate</button>
+    <div class="result" id="r2">0%</div>
+    <div class="small" id="e2"></div>
 </div>
 
 <div class="card">
-    <h2>Estimated Gratuity</h2>
-    <div class="result green" id="gratuityAmount">₹0</div>
+    <h2>Percentage Increase</h2>
+    <input type="number" id="old3" placeholder="Old Value" value="100">
+    <input type="number" id="new3" placeholder="New Value" value="150">
+    <button onclick="calc3()">Calculate</button>
+    <div class="result" id="r3">0%</div>
+    <div class="small" id="e3"></div>
+</div>
+
+<div class="card">
+    <h2>Percentage Decrease</h2>
+    <input type="number" id="old4" placeholder="Old Value" value="500">
+    <input type="number" id="new4" placeholder="New Value" value="350">
+    <button onclick="calc4()">Calculate</button>
+    <div class="result" id="r4">0%</div>
+    <div class="small" id="e4"></div>
+</div>
+
+<div class="card">
+    <h2>Add Percentage</h2>
+    <input type="number" id="val5" placeholder="Value" value="1000">
+    <input type="number" id="per5" placeholder="Percentage" value="18">
+    <button onclick="calc5()">Calculate</button>
+    <div class="result" id="r5">0</div>
+    <div class="small" id="e5"></div>
+</div>
+
+<div class="card">
+    <h2>Subtract Percentage</h2>
+    <input type="number" id="val6" placeholder="Value" value="1000">
+    <input type="number" id="per6" placeholder="Percentage" value="18">
+    <button onclick="calc6()">Calculate</button>
+    <div class="result" id="r6">0</div>
+    <div class="small" id="e6"></div>
+</div>
+
+<div class="card">
+    <h2>Reverse Percentage</h2>
+    <input type="number" id="val7" placeholder="Final Value" value="118">
+    <input type="number" id="per7" placeholder="Percentage" value="18">
+    <button onclick="calc7()">Calculate</button>
+    <div class="result" id="r7">0</div>
+    <div class="small" id="e7"></div>
+</div>
+
+<div class="card">
+    <h2>Percentage Difference</h2>
+    <input type="number" id="a8" placeholder="Value A" value="80">
+    <input type="number" id="b8" placeholder="Value B" value="100">
+    <button onclick="calc8()">Calculate</button>
+    <div class="result" id="r8">0%</div>
+    <div class="small" id="e8"></div>
+</div>
+
+<div class="card">
+    <h2>Discount Calculator</h2>
+    <input type="number" id="price9" placeholder="Price" value="2000">
+    <input type="number" id="disc9" placeholder="Discount %" value="25">
+    <button onclick="calc9()">Calculate</button>
+    <div class="result" id="r9">0</div>
+    <div class="small" id="e9"></div>
 </div>
 
 </div>
 
-<!-- NOTE -->
-<div class="note" id="formulaNote">
-Formula: (Salary × 15 × Years of Service) ÷ 26
+<!-- SEO CONTENT -->
+<div class="content">
+
+<h2>What is a Percentage Calculator?</h2>
+
+<p>
+A Percentage Calculator is a simple yet powerful online tool that helps you calculate percentages quickly and accurately. Whether you want to find the percentage of a number, calculate percentage increase or decrease, or determine marks percentage, this calculator makes the process fast and error-free.
+</p>
+
+<p>
+Percentages are widely used in everyday life including academics, finance, business, shopping discounts, and statistics.
+</p>
+
+<h2>What is Percentage?</h2>
+
+<p>
+A percentage is a number expressed as a fraction of 100. It is represented by the symbol %. For example, 50% means 50 out of 100.
+</p>
+
+<ul>
+<li>Exam marks percentage</li>
+<li>Shopping discounts</li>
+<li>Profit & loss calculation</li>
+<li>Bank interest rates</li>
+<li>Data analysis</li>
+</ul>
+
+<h2>Percentage Formula</h2>
+
+<p><strong>(Part / Whole) × 100</strong></p>
+
+<h2>Percentage Increase & Decrease</h2>
+
+<p><strong>Increase:</strong> (New - Old) / Old × 100</p>
+<p><strong>Decrease:</strong> (Old - New) / Old × 100</p>
+
+<h2>Benefits of Percentage Calculator</h2>
+
+<ul>
+<li>Fast and accurate results</li>
+<li>Useful for students and professionals</li>
+<li>Helps in finance and business</li>
+<li>Saves time</li>
+<li>Easy to use</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>
+A Percentage Calculator is an essential tool for students, professionals, and business users to perform quick and accurate percentage calculations in daily life.
+</p>
+
 </div>
 
 </div>
@@ -93,45 +173,68 @@ function num(id){
     return parseFloat(document.getElementById(id).value) || 0;
 }
 
-function formatINR(amount){
-    return '₹' + Math.round(amount).toLocaleString('en-IN');
+function calc1(){
+    let p=num('p1'), v=num('v1');
+    let r=(p/100)*v;
+    document.getElementById('r1').innerText=r.toFixed(2);
+    document.getElementById('e1').innerText=`${p}% of ${v} = ${r.toFixed(2)}`;
 }
 
-function calculateGratuity(){
-
-    let salary = num('salary');
-    let years = parseInt(num('years'));
-    let months = parseInt(num('months'));
-    let coverage = document.getElementById('coverage').value;
-
-    if(months >= 6){
-        years += 1;
-    }
-
-    let divisor = (coverage === 'covered') ? 26 : 30;
-
-    let gratuity = (salary * 15 * years) / divisor;
-
-    document.getElementById('serviceYears').innerText = years + " Years";
-
-    if(years >= 5){
-        document.getElementById('eligibility').innerHTML =
-        '<span class="green">Eligible</span>';
-    } else {
-        document.getElementById('eligibility').innerHTML =
-        '<span class="not-eligible">Not Eligible</span>';
-    }
-
-    document.getElementById('gratuityAmount').innerText =
-        formatINR(gratuity);
-
-    document.getElementById('formulaNote').innerHTML =
-        coverage === 'covered'
-        ? "Formula: (Salary × 15 × Years of Service) ÷ 26"
-        : "Formula: (Salary × 15 × Years of Service) ÷ 30";
+function calc2(){
+    let p=num('p2'), v=num('v2');
+    let r=(p/v)*100;
+    document.getElementById('r2').innerText=r.toFixed(2)+'%';
+    document.getElementById('e2').innerText=`${p} is ${r.toFixed(2)}% of ${v}`;
 }
 
-calculateGratuity();
+function calc3(){
+    let o=num('old3'), n=num('new3');
+    let r=((n-o)/o)*100;
+    document.getElementById('r3').innerText=r.toFixed(2)+'%';
+    document.getElementById('e3').innerText=`Increase = ${r.toFixed(2)}%`;
+}
+
+function calc4(){
+    let o=num('old4'), n=num('new4');
+    let r=((o-n)/o)*100;
+    document.getElementById('r4').innerText=r.toFixed(2)+'%';
+    document.getElementById('e4').innerText=`Decrease = ${r.toFixed(2)}%`;
+}
+
+function calc5(){
+    let v=num('val5'), p=num('per5');
+    let r=v+(v*p/100);
+    document.getElementById('r5').innerText=r.toFixed(2);
+    document.getElementById('e5').innerText=`${p}% added = ${r.toFixed(2)}`;
+}
+
+function calc6(){
+    let v=num('val6'), p=num('per6');
+    let r=v-(v*p/100);
+    document.getElementById('r6').innerText=r.toFixed(2);
+    document.getElementById('e6').innerText=`${p}% removed = ${r.toFixed(2)}`;
+}
+
+function calc7(){
+    let v=num('val7'), p=num('per7');
+    let r=v/(1+p/100);
+    document.getElementById('r7').innerText=r.toFixed(2);
+    document.getElementById('e7').innerText=`Original value = ${r.toFixed(2)}`;
+}
+
+function calc8(){
+    let a=num('a8'), b=num('b8');
+    let r=(Math.abs(a-b)/((a+b)/2))*100;
+    document.getElementById('r8').innerText=r.toFixed(2)+'%';
+    document.getElementById('e8').innerText=`Difference = ${r.toFixed(2)}%`;
+}
+
+function calc9(){
+    let p=num('price9'), d=num('disc9');
+    let r=p-(p*d/100);
+    document.getElementById('r9').innerText=r.toFixed(2);
+    document.getElementById('e9').innerText=`Final price = ${r.toFixed(2)}`;
+}
 
 </script>
 
