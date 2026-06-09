@@ -1,161 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gratuity Calculator</title>
-<link rel="stylesheet" href="static/style.css">
+
+<title>Gratuity Calculator – Calculate Employee Gratuity Amount Online Instantly</title>
+
+<meta name="description" content="Use our free Gratuity Calculator to calculate employee gratuity amount based on salary and years of service. Get instant gratuity calculation as per Indian rules.">
+
+<meta name="keywords" content="Gratuity Calculator, Online Gratuity Calculator, Employee Gratuity Calculator, Gratuity Amount Calculator, Gratuity Calculator India, Retirement Gratuity Calculator, Salary Gratuity Calculator, Free Gratuity Calculator">
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>Gratuity Calculator</h1>
+    <!-- CALCULATOR SECTION -->
+    <section class="calculator-section">
 
-    <p class="subtitle">
-        Calculate gratuity amount based on salary and years of service
-    </p>
+        <h1>Gratuity Calculator</h1>
 
-    <div class="calculator">
+        <p class="intro">
+            Calculate your gratuity amount based on last drawn salary and years of service.
+            Get instant eligibility status and estimated gratuity payout as per Indian gratuity rules.
+        </p>
 
-        <div class="grid">
+        <div class="calculator">
 
-            <div class="form-group">
-                <label>Last Drawn Salary (Basic + DA)</label>
-                <input type="number" id="salary" value="50000">
+            <div class="grid">
+
+                <div class="form-group">
+                    <label>Last Drawn Salary (Basic + DA)</label>
+                    <input type="number" id="salary" value="50000">
+                </div>
+
+                <div class="form-group">
+                    <label>Years of Service</label>
+                    <input type="number" id="years" value="7">
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Months</label>
+                    <input type="number" id="months" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Employment Type</label>
+
+                    <select id="coverage">
+                        <option value="covered">Covered Under Gratuity Act</option>
+                        <option value="not-covered">Not Covered Under Gratuity Act</option>
+                    </select>
+
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label>Years of Service</label>
-                <input type="number" id="years" value="7">
+            <button onclick="calculateGratuity()">Calculate Gratuity</button>
+
+        </div>
+
+        <div class="results">
+
+            <div class="result-card">
+                <h3>Eligible Service</h3>
+                <p id="serviceYears">0 Years</p>
             </div>
 
-            <div class="form-group">
-                <label>Additional Months</label>
-                <input type="number" id="months" value="0">
+            <div class="result-card">
+                <h3>Eligibility Status</h3>
+                <p id="eligibility">-</p>
             </div>
 
-            <div class="form-group">
-                <label>Employment Type</label>
-
-                <select id="coverage">
-                    <option value="covered">
-                        Covered Under Gratuity Act
-                    </option>
-
-                    <option value="not-covered">
-                        Not Covered Under Gratuity Act
-                    </option>
-                </select>
+            <div class="result-card">
+                <h3>Estimated Gratuity</h3>
+                <p class="gratuity" id="gratuityAmount">₹0</p>
             </div>
 
         </div>
 
-        <button onclick="calculateGratuity()">
-            Calculate Gratuity
-        </button>
-
-    </div>
-
-    <div class="results">
-
-        <div class="card">
-            <h3>Eligible Service</h3>
-            <p id="serviceYears">0 Years</p>
+        <div class="note" id="formulaNote">
+            Formula: (Salary × 15 × Years of Service) ÷ 26
         </div>
 
-        <div class="card">
-            <h3>Eligibility Status</h3>
-            <p id="eligibility">-</p>
-        </div>
+    </section>
 
-        <div class="card">
-            <h3>Estimated Gratuity</h3>
-            <p class="gratuity" id="gratuityAmount">₹0</p>
-        </div>
 
-    </div>
+    <!-- SEO CONTENT SECTION -->
+    <section class="content-section">
 
-    <div class="note" id="formulaNote">
-        Formula:
-        (Salary × 15 × Years of Service) ÷ 26
-    </div>
+        <h2>What is Gratuity Calculator?</h2>
+
+        <p>
+            A Gratuity Calculator is a financial tool that helps employees calculate the gratuity amount
+            they are eligible to receive after completing a certain number of years in an organization.
+        </p>
+
+        <p>
+            It simplifies complex gratuity formulas and provides instant estimation based on salary and service duration.
+        </p>
+
+        <h2>What is Gratuity?</h2>
+
+        <p>
+            Gratuity is a lump sum benefit paid by an employer to an employee as a reward for long-term service.
+            It is governed by the Payment of Gratuity Act, 1972 in India.
+        </p>
+
+        <p>
+            It is usually paid at retirement, resignation, or in case of death or disability.
+        </p>
+
+        <h2>Gratuity Formula</h2>
+
+        <p><strong>(Last Drawn Salary × 15 × Years of Service) ÷ 26</strong></p>
+
+        <ul>
+            <li>Salary = Basic + Dearness Allowance</li>
+            <li>15 = 15 days salary per year</li>
+            <li>26 = Working days in a month</li>
+        </ul>
+
+        <h2>Example Calculation</h2>
+
+        <p>
+            Salary = ₹50,000<br>
+            Service = 10 years
+        </p>
+
+        <ul>
+            <li>Gratuity = (50,000 × 15 × 10) ÷ 26</li>
+            <li>≈ ₹2,88,461</li>
+        </ul>
+
+        <h2>How Gratuity Calculator Works</h2>
+
+        <p>
+            The calculator uses your salary and years of service to compute gratuity instantly
+            based on government-defined formulas.
+        </p>
+
+        <h2>Eligibility Criteria</h2>
+
+        <ul>
+            <li>Minimum 5 years of continuous service (generally)</li>
+            <li>Applicable under Gratuity Act, 1972</li>
+            <li>Retirement, resignation, or termination cases</li>
+            <li>Relaxation in case of death or disability</li>
+        </ul>
+
+        <h2>Benefits of Gratuity Calculator</h2>
+
+        <ul>
+            <li>Instant gratuity estimation</li>
+            <li>Helps retirement planning</li>
+            <li>Shows eligibility status</li>
+            <li>Accurate and error-free results</li>
+            <li>Useful for job change decisions</li>
+        </ul>
+
+        <h2>Why Gratuity is Important</h2>
+
+        <p>
+            Gratuity provides financial security after long-term employment and acts as a reward for employee loyalty.
+        </p>
+
+        <p>
+            It is a key component of retirement benefits along with EPF and pension.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            A Gratuity Calculator is an essential tool for employees to estimate their end-of-service benefits.
+            It ensures transparency, simplifies calculations, and helps in better financial planning.
+        </p>
+
+    </section>
 
 </div>
 
 <script>
 
 function formatINR(amount){
-    return '₹' +
-    Math.round(amount).toLocaleString('en-IN');
+    return '₹' + Math.round(amount).toLocaleString('en-IN');
 }
 
 function calculateGratuity(){
 
-    let salary =
-    parseFloat(
-        document.getElementById('salary').value
-    ) || 0;
+    let salary = parseFloat(document.getElementById('salary').value) || 0;
+    let years = parseInt(document.getElementById('years').value) || 0;
+    let months = parseInt(document.getElementById('months').value) || 0;
 
-    let years =
-    parseInt(
-        document.getElementById('years').value
-    ) || 0;
-
-    let months =
-    parseInt(
-        document.getElementById('months').value
-    ) || 0;
-
-    const coverage =
-    document.getElementById('coverage').value;
+    const coverage = document.getElementById('coverage').value;
 
     if(months >= 6){
         years += 1;
     }
 
-    let divisor = 26;
+    let divisor = (coverage === 'covered') ? 26 : 30;
 
-    if(coverage === 'not-covered'){
-        divisor = 30;
-    }
+    const gratuity = (salary * 15 * years) / divisor;
 
-    const gratuity =
-    (salary * 15 * years) / divisor;
-
-    document.getElementById(
-        'serviceYears'
-    ).innerText =
-    years + ' Years';
+    document.getElementById('serviceYears').innerText = years + ' Years';
 
     if(years >= 5){
-
-        document.getElementById(
-            'eligibility'
-        ).innerHTML =
-        '<span class="eligible">Eligible</span>';
-
-    }else{
-
-        document.getElementById(
-            'eligibility'
-        ).innerHTML =
-        '<span class="not-eligible">Not Eligible</span>';
+        document.getElementById('eligibility').innerHTML =
+            '<span class="eligible">Eligible</span>';
+    } else {
+        document.getElementById('eligibility').innerHTML =
+            '<span class="not-eligible">Not Eligible</span>';
     }
 
-    document.getElementById(
-        'gratuityAmount'
-    ).innerText =
-    formatINR(gratuity);
+    document.getElementById('gratuityAmount').innerText =
+        formatINR(gratuity);
 
-    document.getElementById(
-        'formulaNote'
-    ).innerHTML =
-    coverage === 'covered'
-    ?
-    'Formula: (Salary × 15 × Years of Service) ÷ 26'
-    :
-    'Formula: (Salary × 15 × Years of Service) ÷ 30';
+    document.getElementById('formulaNote').innerHTML =
+        coverage === 'covered'
+        ? 'Formula: (Salary × 15 × Years of Service) ÷ 26'
+        : 'Formula: (Salary × 15 × Years of Service) ÷ 30';
 }
 
 calculateGratuity();
@@ -164,4 +230,3 @@ calculateGratuity();
 
 </body>
 </html>
-
