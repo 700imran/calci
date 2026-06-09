@@ -1,193 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EMI Calculator</title>
+<title>EMI Calculator – Calculate Home Loan, Personal Loan & Car Loan EMI Online</title>
+
+<meta name="description" content="Use our free EMI Calculator to calculate monthly loan EMI for home loan, personal loan, car loan, and education loan. Get instant EMI breakdown with interest and repayment schedule.">
+
+<meta name="keywords" content="EMI Calculator, Loan EMI Calculator, Online EMI Calculator, Monthly EMI Calculator, Home Loan EMI Calculator, Personal Loan EMI Calculator, Car Loan EMI Calculator, EMI Interest Calculator, Free EMI Calculator India">
+
 <link rel="stylesheet" href="static/style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>EMI Calculator</h1>
+    <!-- CALCULATOR SECTION -->
+    <section class="calculator-section">
 
-    <p class="subtitle">
-        Calculate Home Loan, Personal Loan, Car Loan and Education Loan EMI
-    </p>
+        <h1>EMI Calculator</h1>
 
-    <div class="calculator">
+        <p class="intro">
+            Calculate Home Loan, Personal Loan, Car Loan, Education Loan and Business Loan EMI instantly.
+            Get monthly EMI, total interest payable and complete repayment schedule in seconds.
+        </p>
 
-        <div class="grid">
+        <div class="calculator">
 
-            <div class="form-group">
-                <label>Loan Type</label>
+            <div class="grid">
 
-                <select>
-                    <option>Home Loan</option>
-                    <option>Personal Loan</option>
-                    <option>Car Loan</option>
-                    <option>Education Loan</option>
-                    <option>Business Loan</option>
-                </select>
+                <div class="form-group">
+                    <label>Loan Type</label>
+                    <select id="loanType">
+                        <option>Home Loan</option>
+                        <option>Personal Loan</option>
+                        <option>Car Loan</option>
+                        <option>Education Loan</option>
+                        <option>Business Loan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Loan Amount (₹)</label>
+                    <input type="number" id="loanAmount" value="1000000">
+                </div>
+
+                <div class="form-group">
+                    <label>Interest Rate (% p.a.)</label>
+                    <input type="number" id="interestRate" value="8.5">
+                </div>
+
+                <div class="form-group">
+                    <label>Loan Tenure (Years)</label>
+                    <input type="number" id="loanYears" value="20">
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label>Loan Amount (₹)</label>
-                <input type="number" id="loanAmount" value="1000000">
+            <button onclick="calculateEMI()">Calculate EMI</button>
+
+        </div>
+
+        <div class="results">
+
+            <div class="result-card">
+                <h3>Monthly EMI</h3>
+                <p id="emiValue">₹0</p>
             </div>
 
-            <div class="form-group">
-                <label>Interest Rate (% p.a.)</label>
-                <input type="number" id="interestRate" value="8.5">
+            <div class="result-card">
+                <h3>Total Interest</h3>
+                <p class="green" id="interestValue">₹0</p>
             </div>
 
-            <div class="form-group">
-                <label>Loan Tenure (Years)</label>
-                <input type="number" id="loanYears" value="20">
+            <div class="result-card">
+                <h3>Total Payment</h3>
+                <p id="paymentValue">₹0</p>
             </div>
 
         </div>
 
-        <button onclick="calculateEMI()">
-            Calculate EMI
-        </button>
+        <div class="table-wrapper">
 
-    </div>
+            <table>
 
-    <div class="results">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Principal Paid</th>
+                        <th>Interest Paid</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
 
-        <div class="card">
-            <h3>Monthly EMI</h3>
-            <p id="emiValue">₹0</p>
+                <tbody id="scheduleBody"></tbody>
+
+            </table>
+
         </div>
 
-        <div class="card">
-            <h3>Total Interest</h3>
-            <p class="green" id="interestValue">₹0</p>
-        </div>
+    </section>
 
-        <div class="card">
-            <h3>Total Payment</h3>
-            <p id="paymentValue">₹0</p>
-        </div>
 
-    </div>
+    <!-- SEO CONTENT SECTION -->
+    <section class="content-section">
 
-    <div class="table-wrapper">
+        <h2>What is EMI Calculator?</h2>
 
-        <table>
+        <p>
+            An EMI Calculator is a financial tool that helps you calculate your Equated Monthly Installment (EMI)
+            for any type of loan including home loan, personal loan, car loan, education loan, or business loan.
+        </p>
 
-            <thead>
-                <tr>
-                    <th>Year</th>
-                    <th>Principal Paid</th>
-                    <th>Interest Paid</th>
-                    <th>Balance</th>
-                </tr>
-            </thead>
+        <p>
+            It instantly shows your monthly repayment amount, total interest payable, and total repayment value,
+            helping you plan your finances before taking a loan.
+        </p>
 
-            <tbody id="scheduleBody">
-            </tbody>
+        <h2>What is EMI?</h2>
 
-        </table>
+        <p>
+            EMI (Equated Monthly Installment) is a fixed monthly payment made by a borrower to repay a loan.
+            Each EMI includes both principal repayment and interest charged by the lender.
+        </p>
 
-    </div>
+        <p>
+            In early years, EMI consists mostly of interest, while later it shifts towards principal repayment.
+        </p>
+
+        <h2>EMI Formula</h2>
+
+        <p><strong>EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]</strong></p>
+
+        <ul>
+            <li>P = Loan Amount</li>
+            <li>R = Monthly Interest Rate</li>
+            <li>N = Loan Tenure in Months</li>
+        </ul>
+
+        <h2>Example EMI Calculation</h2>
+
+        <p>
+            Loan Amount: ₹10,00,000<br>
+            Interest Rate: 10% per year<br>
+            Tenure: 5 years
+        </p>
+
+        <ul>
+            <li>Monthly EMI ≈ ₹21,247</li>
+            <li>Total Payment ≈ ₹12,74,820</li>
+            <li>Total Interest ≈ ₹2,74,820</li>
+        </ul>
+
+        <h2>How EMI Calculator Works</h2>
+
+        <p>
+            The calculator converts annual interest into monthly interest and applies it to your loan amount
+            over the selected tenure to compute EMI, interest, and total repayment.
+        </p>
+
+        <h2>Benefits of EMI Calculator</h2>
+
+        <ul>
+            <li>Instant EMI calculation</li>
+            <li>Helps financial planning</li>
+            <li>Compares loan offers easily</li>
+            <li>Reduces financial stress</li>
+            <li>Improves loan decision making</li>
+        </ul>
+
+        <h2>Types of Loans Covered</h2>
+
+        <ul>
+            <li>Home Loan EMI Calculator</li>
+            <li>Personal Loan EMI Calculator</li>
+            <li>Car Loan EMI Calculator</li>
+            <li>Education Loan EMI Calculator</li>
+            <li>Business Loan EMI Calculator</li>
+        </ul>
+
+        <h2>Why Use EMI Calculator?</h2>
+
+        <p>
+            An EMI Calculator helps you understand your repayment burden before taking a loan.
+            It ensures better financial planning and avoids over-borrowing.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            An EMI Calculator is an essential financial planning tool for anyone planning to take a loan.
+            It provides instant EMI breakdown, total interest payable, and repayment schedule.
+            Use this EMI Calculator to make smart borrowing decisions and manage your finances effectively.
+        </p>
+
+    </section>
 
 </div>
 
 <script>
 
 function formatINR(value){
-    return '₹' +
-    Math.round(value)
-    .toLocaleString('en-IN');
+    return '₹' + Math.round(value).toLocaleString('en-IN');
 }
 
 function calculateEMI(){
 
-    const principal =
-    parseFloat(
-        document.getElementById(
-        'loanAmount').value
-    );
+    const principal = parseFloat(document.getElementById('loanAmount').value);
+    const annualRate = parseFloat(document.getElementById('interestRate').value);
+    const years = parseFloat(document.getElementById('loanYears').value);
 
-    const annualRate =
-    parseFloat(
-        document.getElementById(
-        'interestRate').value
-    );
-
-    const years =
-    parseFloat(
-        document.getElementById(
-        'loanYears').value
-    );
-
-    const monthlyRate =
-    annualRate / 12 / 100;
-
-    const months =
-    years * 12;
+    const monthlyRate = annualRate / 12 / 100;
+    const months = years * 12;
 
     const emi =
-    principal *
-    monthlyRate *
-    Math.pow(
-        1 + monthlyRate,
-        months
-    ) /
-    (
-        Math.pow(
-            1 + monthlyRate,
-            months
-        ) - 1
-    );
+        principal *
+        monthlyRate *
+        Math.pow(1 + monthlyRate, months) /
+        (Math.pow(1 + monthlyRate, months) - 1);
 
-    const totalPayment =
-    emi * months;
+    const totalPayment = emi * months;
+    const totalInterest = totalPayment - principal;
 
-    const totalInterest =
-    totalPayment - principal;
+    document.getElementById('emiValue').innerText = formatINR(emi);
+    document.getElementById('interestValue').innerText = formatINR(totalInterest);
+    document.getElementById('paymentValue').innerText = formatINR(totalPayment);
 
-    document.getElementById(
-        'emiValue'
-    ).innerText =
-    formatINR(emi);
-
-    document.getElementById(
-        'interestValue'
-    ).innerText =
-    formatINR(totalInterest);
-
-    document.getElementById(
-        'paymentValue'
-    ).innerText =
-    formatINR(totalPayment);
-
-    createSchedule(
-        principal,
-        monthlyRate,
-        emi,
-        years
-    );
+    createSchedule(principal, monthlyRate, emi, years);
 }
 
-function createSchedule(
-    principal,
-    monthlyRate,
-    emi,
-    years
-){
+function createSchedule(principal, monthlyRate, emi, years){
 
     let balance = principal;
-
-    const tbody =
-    document.getElementById(
-        'scheduleBody'
-    );
-
+    const tbody = document.getElementById('scheduleBody');
     tbody.innerHTML = '';
 
     for(let year=1; year<=years; year++){
@@ -197,21 +245,15 @@ function createSchedule(
 
         for(let month=1; month<=12; month++){
 
-            const interest =
-            balance *
-            monthlyRate;
-
-            const principalPart =
-            emi - interest;
+            const interest = balance * monthlyRate;
+            const principalPart = emi - interest;
 
             balance -= principalPart;
 
             principalPaid += principalPart;
             interestPaid += interest;
 
-            if(balance < 0){
-                balance = 0;
-            }
+            if(balance < 0) balance = 0;
         }
 
         tbody.innerHTML += `
@@ -220,8 +262,7 @@ function createSchedule(
             <td>${formatINR(principalPaid)}</td>
             <td>${formatINR(interestPaid)}</td>
             <td>${formatINR(balance)}</td>
-        </tr>
-        `;
+        </tr>`;
     }
 }
 
@@ -231,4 +272,3 @@ calculateEMI();
 
 </body>
 </html>
-
