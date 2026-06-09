@@ -44,48 +44,32 @@ crossorigin="anonymous">
         <a href="index.html">Calculator Hub</a>
     </div>
 
+    <button class="menu-btn" id="menuBtn">☰</button>
+
     <nav>
+        <ul class="nav-links" id="navLinks">
 
-        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
 
-            <li>
-                <a href="index.html">Home</a>
-            </li>
+            <li><a href="emi.html">EMI Calculator</a></li>
+            <li><a href="sip.html">SIP Calculator</a></li>
+            <li><a href="gst.html">GST Calculator</a></li>
+            <li><a href="gratuity.html">Gratuity Calculator</a></li>
+            <li><a href="percentage.html">Percentage Calculator</a></li>
+            <li><a href="income-tax.html">Income Tax Calculator</a></li>
+            <li><a href="fd.html">FD Calculator</a></li>
+            <li><a href="rd.html">RD Calculator</a></li>
+            <li><a href="bmi.html">BMI Calculator</a></li>
+            <li><a href="age.html">Age Calculator</a></li>
 
-            <button class="menu-btn">
-               ☰
-            </button>
-
-
-                    <li><a href="emi.html">EMI Calculator</a></li>
-                    <li><a href="sip.html">SIP Calculator</a></li>
-                    <li><a href="gst.html">GST Calculator</a></li>
-                    <li><a href="gratuity.html">Gratuity Calculator</a></li>
-                    <li><a href="percentage.html">Percentage Calculator</a></li>
-                    <li><a href="income-tax.html">Income Tax Calculator</a></li>
-                    <li><a href="fd.html">FD Calculator</a></li>
-                    <li><a href="rd.html">RD Calculator</a></li>
-                    <li><a href="bmi.html">BMI Calculator</a></li>
-                    <li><a href="age.html">Age Calculator</a></li>
-
-                </ul>
-
-            </li>
-
-            <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
 
         </ul>
-
     </nav>
 
-    
 </header>
+
 
 <div class="container">
 
@@ -235,7 +219,23 @@ document.getElementById("search")
 });
 
 </script>
+<script>
+// SEARCH FILTER (fixed display issue)
+document.getElementById("search").addEventListener("input", function () {
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
 
+    cards.forEach(card => {
+        let match = card.innerText.toLowerCase().includes(value);
+        card.style.display = match ? "" : "none";
+    });
+});
+
+// MOBILE MENU TOGGLE
+document.getElementById("menuBtn").addEventListener("click", function () {
+    document.getElementById("navLinks").classList.toggle("active");
+});
+</script>
 </body>
 </html>
 
