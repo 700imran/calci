@@ -1,253 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIP Calculator - Mutual Fund, Stocks & Index Fund Returns</title>
+<title>SIP Calculator – Calculate SIP Returns & Mutual Fund Growth Online</title>
+
+<meta name="description" content="Use our free SIP Calculator to estimate mutual fund returns, future investment value, and wealth creation. Calculate monthly SIP returns instantly with compounding.">
+
+<meta name="keywords" content="SIP Calculator, Mutual Fund SIP Calculator, Online SIP Calculator, SIP Return Calculator, Monthly SIP Calculator, Investment SIP Calculator, SIP Calculator India, Future Value SIP Calculator, Wealth SIP Calculator, Best SIP Calculator">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>SIP Calculator</h1>
+    <!-- CALCULATOR SECTION -->
+    <section class="calculator-section">
 
-    <p class="subtitle">
-        Calculate Mutual Fund, Index Fund, Gold ETF, FD and Stock SIP Returns
-    </p>
+        <h1>SIP Calculator</h1>
 
-    <div class="calculator">
+        <p class="intro">
+            Calculate Mutual Fund, Index Fund, Stocks, Gold ETF and FD SIP returns instantly.
+            Estimate your future wealth, total investment and expected gains using this free SIP Calculator.
+        </p>
 
-        <div class="grid">
+        <div class="calculator">
 
-            <div class="form-group">
-                <label>Monthly Investment (₹)</label>
-                <input type="number" id="sipAmount" value="5000">
+            <div class="grid">
+
+                <div class="form-group">
+                    <label>Monthly Investment (₹)</label>
+                    <input type="number" id="sipAmount" value="5000">
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Period (Years)</label>
+                    <input type="number" id="years" value="10">
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Type</label>
+
+                    <select id="investmentType">
+
+                        <option value="3">Savings Account (3%)</option>
+                        <option value="6.5">Fixed Deposit (6.5%)</option>
+                        <option value="7.5">Debt Fund (7.5%)</option>
+                        <option value="10">Hybrid Fund (10%)</option>
+                        <option value="12" selected>Index Fund (12%)</option>
+                        <option value="12">Large Cap Fund (12%)</option>
+                        <option value="13">Flexi Cap Fund (13%)</option>
+                        <option value="15">Mid Cap Fund (15%)</option>
+                        <option value="18">Small Cap Fund (18%)</option>
+                        <option value="8">Gold ETF (8%)</option>
+                        <option value="12">Stocks Conservative (12%)</option>
+                        <option value="15">Stocks Moderate (15%)</option>
+                        <option value="20">Stocks Aggressive (20%)</option>
+                        <option value="custom">Custom Return</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="customBox">
+                    <label>Custom Return (%)</label>
+                    <input type="number" id="customReturn" value="12">
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label>Investment Period (Years)</label>
-                <input type="number" id="years" value="10">
+            <button onclick="calculateSIP()">Calculate SIP Returns</button>
+
+        </div>
+
+        <div class="results">
+
+            <div class="result-card">
+                <h3>Total Investment</h3>
+                <p id="investmentValue">₹0</p>
             </div>
 
-            <div class="form-group">
-                <label>Investment Type</label>
-
-                <select id="investmentType">
-
-                    <option value="3">Savings Account (3%)</option>
-                    <option value="6.5">Fixed Deposit (6.5%)</option>
-                    <option value="7.5">Debt Fund (7.5%)</option>
-                    <option value="10">Hybrid Fund (10%)</option>
-                    <option value="12" selected>Index Fund (12%)</option>
-                    <option value="12">Large Cap Fund (12%)</option>
-                    <option value="13">Flexi Cap Fund (13%)</option>
-                    <option value="15">Mid Cap Fund (15%)</option>
-                    <option value="18">Small Cap Fund (18%)</option>
-                    <option value="8">Gold ETF (8%)</option>
-                    <option value="12">Stocks Conservative (12%)</option>
-                    <option value="15">Stocks Moderate (15%)</option>
-                    <option value="20">Stocks Aggressive (20%)</option>
-                    <option value="custom">Custom Return</option>
-
-                </select>
+            <div class="result-card">
+                <h3>Estimated Wealth</h3>
+                <p id="wealthValue">₹0</p>
             </div>
 
-            <div class="form-group hidden" id="customBox">
-                <label>Custom Return (%)</label>
-                <input type="number" id="customReturn" value="12">
+            <div class="result-card">
+                <h3>Total Gains</h3>
+                <p class="green" id="gainValue">₹0</p>
             </div>
 
         </div>
 
-        <button onclick="calculateSIP()">
-            Calculate SIP Returns
-        </button>
+        <div class="table-wrapper">
 
-    </div>
+            <table>
 
-    <div class="results">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Invested</th>
+                        <th>Estimated Value</th>
+                    </tr>
+                </thead>
 
-        <div class="result-card">
-            <h3>Total Investment</h3>
-            <p id="investmentValue">₹0</p>
+                <tbody id="yearlyTable"></tbody>
+
+            </table>
+
         </div>
 
-        <div class="result-card">
-            <h3>Estimated Wealth</h3>
-            <p id="wealthValue">₹0</p>
-        </div>
+    </section>
 
-        <div class="result-card">
-            <h3>Total Gains</h3>
-            <p class="green" id="gainValue">₹0</p>
-        </div>
 
-    </div>
+    <!-- SEO CONTENT SECTION -->
+    <section class="content-section">
 
-    <div class="table-wrapper">
+        <h2>What is a SIP Calculator?</h2>
 
-        <table>
+        <p>
+            A SIP Calculator is a financial planning tool that helps investors estimate
+            the future value of their investments made through a Systematic Investment Plan (SIP).
+            It calculates expected returns based on monthly investment amount, duration, and expected return rate.
+        </p>
 
-            <thead>
-                <tr>
-                    <th>Year</th>
-                    <th>Invested</th>
-                    <th>Estimated Value</th>
-                </tr>
-            </thead>
+        <p>
+            SIP investing is one of the most popular wealth-building strategies in India because it encourages
+            disciplined investing and benefits from long-term compounding.
+        </p>
 
-            <tbody id="yearlyTable">
-            </tbody>
+        <h2>What is SIP?</h2>
 
-        </table>
+        <p>
+            SIP (Systematic Investment Plan) is a method of investing a fixed amount regularly
+            into mutual funds instead of investing a lump sum amount.
+        </p>
 
-    </div>
+        <p>
+            It helps investors reduce risk through rupee cost averaging and builds wealth over time.
+        </p>
+
+        <h2>How SIP Calculator Works</h2>
+
+        <p>
+            The SIP Calculator uses a compound interest-based formula to estimate future returns.
+            It considers monthly investment, expected return rate, and duration.
+        </p>
+
+        <h2>SIP Formula</h2>
+
+        <p><strong>M = P × [((1 + i)^n − 1) / i] × (1 + i)</strong></p>
+
+        <ul>
+            <li>M = Maturity Amount</li>
+            <li>P = Monthly SIP</li>
+            <li>i = Monthly Interest Rate</li>
+            <li>n = Number of Months</li>
+        </ul>
+
+        <h2>Example</h2>
+
+        <p>
+            If you invest ₹5,000 per month for 20 years at 12% return:
+        </p>
+
+        <ul>
+            <li>Total Investment: ₹12,00,000</li>
+            <li>Estimated Value: ₹49,00,000+</li>
+            <li>Profit: ₹37,00,000+</li>
+        </ul>
+
+        <h2>Benefits of SIP Calculator</h2>
+
+        <ul>
+            <li>Helps in financial planning</li>
+            <li>Shows compounding effect</li>
+            <li>Estimates future wealth</li>
+            <li>Supports goal-based investing</li>
+            <li>Easy comparison of returns</li>
+        </ul>
+
+        <h2>Who Should Use It?</h2>
+
+        <ul>
+            <li>Mutual Fund Investors</li>
+            <li>Financial Planners</li>
+            <li>Beginners in Investing</li>
+            <li>Retirement Planners</li>
+            <li>Students learning finance</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            A SIP Calculator is an essential tool for anyone looking to build long-term wealth through mutual funds.
+            It helps you estimate returns, understand compounding, and plan investments effectively.
+        </p>
+
+    </section>
 
 </div>
 
 <script>
 
-const typeSelect =
-document.getElementById('investmentType');
+const typeSelect = document.getElementById('investmentType');
 
-typeSelect.addEventListener('change',()=>{
-
-    const customBox =
-    document.getElementById('customBox');
-
-    if(typeSelect.value === 'custom'){
+typeSelect.addEventListener('change', () => {
+    const customBox = document.getElementById('customBox');
+    if (typeSelect.value === 'custom') {
         customBox.classList.remove('hidden');
-    }else{
+    } else {
         customBox.classList.add('hidden');
     }
 });
 
-function formatMoney(num){
-
-    return '₹' +
-    Math.round(num)
-    .toLocaleString('en-IN');
+function formatMoney(num) {
+    return '₹' + Math.round(num).toLocaleString('en-IN');
 }
 
-function calculateSIP(){
+function calculateSIP() {
 
-    const sip =
-    parseFloat(
-    document.getElementById('sipAmount').value);
-
-    const years =
-    parseFloat(
-    document.getElementById('years').value);
+    const sip = parseFloat(document.getElementById('sipAmount').value);
+    const years = parseFloat(document.getElementById('years').value);
 
     let annualReturn;
 
-    if(typeSelect.value === 'custom'){
-
-        annualReturn =
-        parseFloat(
-        document.getElementById('customReturn').value);
-
-    }else{
-
-        annualReturn =
-        parseFloat(typeSelect.value);
+    if (typeSelect.value === 'custom') {
+        annualReturn = parseFloat(document.getElementById('customReturn').value);
+    } else {
+        annualReturn = parseFloat(typeSelect.value);
     }
 
     const months = years * 12;
-
-    const monthlyRate =
-    annualReturn / 12 / 100;
+    const monthlyRate = annualReturn / 12 / 100;
 
     const futureValue =
-    sip *
-    (
-        (
-            Math.pow(
-                1 + monthlyRate,
-                months
-            ) - 1
-        )
-        /
-        monthlyRate
-    )
-    *
-    (1 + monthlyRate);
+        sip *
+        ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+        (1 + monthlyRate);
 
-    const totalInvestment =
-    sip * months;
+    const totalInvestment = sip * months;
+    const gain = futureValue - totalInvestment;
 
-    const gain =
-    futureValue - totalInvestment;
+    document.getElementById('investmentValue').innerText = formatMoney(totalInvestment);
+    document.getElementById('wealthValue').innerText = formatMoney(futureValue);
+    document.getElementById('gainValue').innerText = formatMoney(gain);
 
-    document.getElementById(
-    'investmentValue'
-    ).innerText =
-    formatMoney(totalInvestment);
-
-    document.getElementById(
-    'wealthValue'
-    ).innerText =
-    formatMoney(futureValue);
-
-    document.getElementById(
-    'gainValue'
-    ).innerText =
-    formatMoney(gain);
-
-    createYearlyTable(
-        sip,
-        annualReturn,
-        years
-    );
+    createYearlyTable(sip, annualReturn, years);
 }
 
-function createYearlyTable(
-    sip,
-    annualReturn,
-    years
-){
+function createYearlyTable(sip, annualReturn, years) {
 
-    const table =
-    document.getElementById(
-    'yearlyTable'
-    );
-
+    const table = document.getElementById('yearlyTable');
     table.innerHTML = '';
 
-    const monthlyRate =
-    annualReturn / 12 / 100;
+    const monthlyRate = annualReturn / 12 / 100;
 
-    for(let year=1; year<=years; year++){
+    for (let year = 1; year <= years; year++) {
 
         const months = year * 12;
-
-        const invested =
-        sip * months;
+        const invested = sip * months;
 
         const value =
-        sip *
-        (
-            (
-                Math.pow(
-                    1 + monthlyRate,
-                    months
-                ) - 1
-            )
-            /
-            monthlyRate
-        )
-        *
-        (1 + monthlyRate);
+            sip *
+            ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+            (1 + monthlyRate);
 
         table.innerHTML += `
         <tr>
             <td>${year}</td>
             <td>${formatMoney(invested)}</td>
             <td>${formatMoney(value)}</td>
-        </tr>
-        `;
+        </tr>`;
     }
 }
 
@@ -257,4 +284,3 @@ calculateSIP();
 
 </body>
 </html>
-```
