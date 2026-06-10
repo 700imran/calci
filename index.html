@@ -8,7 +8,7 @@
 
 <meta name="description"
 content="Free online calculator hub with EMI Calculator, SIP Calculator, GST Calculator, Percentage Calculator, Tax Calculator, BMI Calculator, Age Calculator and more.">
-<meta name="google-adsense-account" content="ca-pub-8164053652117370">
+
 <meta name="keywords"
 content="calculator hub, online calculators, emi calculator, sip calculator, gst calculator, gratuity calculator, percentage calculator, bmi calculator">
 
@@ -17,7 +17,7 @@ content="calculator hub, online calculators, emi calculator, sip calculator, gst
 <!-- GOOGLE ANALYTICS -->
 <!-- Replace G-XXXXXXXXXX with your GA4 ID -->
 <script async
-src="https://www.googletagmanager.com/gtag/js?id=G-EZYEQBE8FX">
+src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
 </script>
 
 <script>
@@ -29,43 +29,42 @@ gtag('config', 'G-XXXXXXXXXX');
 
 <!-- GOOGLE ADSENSE -->
 <!-- Replace with your publisher id -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8164053652117370"
-     crossorigin="anonymous"></script>
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+crossorigin="anonymous">
+</script>
 
 </head>
 
 <body>
-
-<header class="navbar">
+    <header class="navbar">
 
     <div class="logo">
         <a href="index.html">Calculator Hub</a>
     </div>
+    <div class="links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="consent.html">Data Usage & Consent</a>
+    </div>
+	<div class="menu-wrapper">
+    <button  id="menuBtn">Calculators</button>
 
-    <button class="menu-btn" id="menuBtn">☰</button>
-
-    <nav>
-        <ul class="nav-links" id="navLinks">
-
-            <li><a href="index.html">Home</a></li>
-
-            <li><a href="emi.html">EMI Calculator</a></li>
-            <li><a href="sip.html">SIP Calculator</a></li>
-            <li><a href="gst.html">GST Calculator</a></li>
-            <li><a href="gratuity.html">Gratuity Calculator</a></li>
-            <li><a href="percentage.html">Percentage Calculator</a></li>
-            <li><a href="income-tax.html">Income Tax Calculator</a></li>
-            <li><a href="fd.html">FD Calculator</a></li>
-            <li><a href="rd.html">RD Calculator</a></li>
-            <li><a href="bmi.html">BMI Calculator</a></li>
-            <li><a href="age.html">Age Calculator</a></li>
-
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-
-        </ul>
+    <nav class="nav-links" id="navLinks">
+        <a href="emi.html">EMI Calculator</a>
+        <a href="sip.html">SIP Calculator</a>
+        <a href="gst.html">GST Calculator</a>
+        <a href="gratuity.html">Gratuity Calculator</a>
+        <a href="percentage.html">Percentage Calculator</a>
+        <a href="income-tax.html">Income Tax Calculator</a>
+        <a href="fd.html">FD Calculator</a>
+        <a href="rd.html">RD Calculator</a>
+        <a href="bmi.html">BMI Calculator</a>
+        <a href="age.html">Age Calculator</a>
     </nav>
-
+	</div>
 </header>
 
 
@@ -185,57 +184,36 @@ gtag('config', 'G-XXXXXXXXXX');
 </div>
 
 <footer>
+    <p>© 2026 Calculator Hub. All Rights Reserved.</p>
 
-    <p>
-        © 2026 Calculator Hub.
-        All Rights Reserved.
-    </p>
-
+    <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="consent.html">Data Usage & Consent</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
 </footer>
-
 <script>
-
-document.getElementById("search")
-.addEventListener("keyup", function(){
-
-    let value =
-    this.value.toLowerCase();
-
-    let cards =
-    document.querySelectorAll(".card");
-
-    cards.forEach(card=>{
-
-        card.style.display =
-        card.innerText.toLowerCase()
-        .includes(value)
-        ? "block"
-        : "none";
-
-    });
-
-});
-
-</script>
-<script>
-// SEARCH FILTER (fixed display issue)
+// SEARCH (FIXED - only ONE listener)
 document.getElementById("search").addEventListener("input", function () {
     let value = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(card => {
-        let match = card.innerText.toLowerCase().includes(value);
-        card.style.display = match ? "" : "none";
+        card.style.display =
+            card.innerText.toLowerCase().includes(value)
+            ? ""
+            : "none";
     });
 });
-
-// MOBILE MENU TOGGLE
-document.getElementById("menuBtn").addEventListener("click", function () {
-    document.getElementById("navLinks").classList.toggle("active");
-});
 </script>
+
 </body>
 </html>
+
+
+
 
 
 </body>
