@@ -109,18 +109,12 @@ top:0;
 left:0;
 width:100%;
 z-index:10001;
-
-```
 background:var(--card);
 border-bottom:1px solid var(--border);
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:12px 18px;
-
-
 }
 
 /* LOGO */
@@ -233,7 +227,7 @@ color:var(--primary);
 
 .nav-links{
     position:fixed;
-    top:60px; /* adjust to navbar height */
+    top:60px;
     left:5px;
     right:5px;
 
@@ -244,6 +238,7 @@ color:var(--primary);
     max-width:none;
     width:auto;
 }
+
 /* BUTTONS */
 
 button{
@@ -701,7 +696,6 @@ th,td{
 
 
 
-
     .content-section{
 
         padding:20px;
@@ -764,6 +758,4 @@ footer a:hover{
     justify-content:center;
     flex-wrap:wrap;
     gap:15px;
-}
-
 }
