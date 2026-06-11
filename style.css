@@ -149,8 +149,9 @@ color:var(--primary);
   display: inline-block;
 }
 
-/* MENU BUTTON */
+/* BUTTON */
 #menuBtn {
+  display: none; /* hidden on desktop */
   width: auto;
   padding: 6px 12px;
   background: none;
@@ -161,7 +162,7 @@ color:var(--primary);
   z-index: 10002;
 }
 
-/* HORIZONTAL MENU BAR */
+/* DESKTOP MENU */
 .nav-links {
   position: absolute;
   top: 100%;
@@ -173,7 +174,6 @@ color:var(--primary);
 
   max-width: calc(100vw - 10px);
 
-  /* transparent container */
   background: transparent;
   border: none;
   box-shadow: none;
@@ -187,14 +187,14 @@ color:var(--primary);
   z-index: 10000;
 }
 
-/* SHOW ON HOVER */
+/* DESKTOP HOVER */
 .menu-wrapper:hover .nav-links {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* EACH OPTION AS A CARD */
+/* LINKS */
 .nav-links a {
   display: inline-flex;
   align-items: center;
@@ -210,13 +210,11 @@ color:var(--primary);
   color: var(--text);
 
   white-space: nowrap;
-
   box-shadow: 0 3px 8px rgba(0,0,0,.05);
 
   transition: .2s;
 }
 
-/* HOVER EFFECT */
 .nav-links a:hover {
   background: var(--bg);
   border-color: var(--primary);
@@ -224,21 +222,57 @@ color:var(--primary);
   transform: translateY(-2px);
 }
 
+/* ================= MOBILE ================= */
 
-.nav-links{
-    position:fixed;
-    top:60px;
-    left:5px;
-    right:5px;
+@media (max-width:768px) {
 
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
+  #menuBtn {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
 
-    max-width:none;
-    width:auto;
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: -320px;
+
+    width: 280px;
+    height: calc(100vh - 70px);
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
+
+    padding: 12px;
+
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+
+    transition: left .3s ease;
+  }
+
+  /* disable hover on mobile */
+  .menu-wrapper:hover .nav-links {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav-links.show {
+    left: 0;
+  }
+
+  .nav-links a {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
-
 /* BUTTONS */
 
 button{
